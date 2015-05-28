@@ -16,7 +16,24 @@ chefname: string
 email: string
 
 - chefname must be present
--  must be between 3 characters and less than 40 characters
+- must be between 3 characters and less than 40 characters
 - email must be present
 - email must be unique(Because is for login in)
 - email must be valid
+
+Chefs:
+
+What we have already:
+- Chef model and validations
+- chefs table with chefname and email
+
+What we need to do:
+- Add passwords to the chefs table so chefs can authenticated and log in
+- Use email as log credentials, since email is unique
+- Ability to register new chefs to use the app
+- Ability to display chefs profile
+- Ability to list chefs using the app
+- Ability for chefs to log in and out the app
+- Restrict actions like create,edit and like to ches logged in only
+- Restricting edit of recipes by chefs who created recipe
+
