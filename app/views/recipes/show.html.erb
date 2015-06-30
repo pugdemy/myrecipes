@@ -28,7 +28,6 @@
       <p>
         <strong>Steps:</strong>
       </p>
-      <%= simple_format(@recipe.description) %>
       <div class="pull-right">
         <%= link_to like_recipe_path(@recipe, like: true), method: :post do %>
           <i class="glyphicon glyphicon-thumbs-up"></i> &nbsp <%= @recipe.thumbs_up_total %>
@@ -40,5 +39,30 @@
     </div>
   </div>
 </div>
+<% if logged_in? %>
+<div class="row">
+	<div class="col-md-8">
+		<%= render 'shared/page_title', title: "Review This Recipe" %>
+		
+		
+				<%= form_for([@recipe, @review]) do |f| %>
+				<%= f.label :Review %>
+				<%= f.text_area :body, rows: 5  %>
+			
+				<%= f.submit "Create Review", class: "btn btn-success" %>
+				<% end %>
+			
+	</div>
+</div>
+<% else %>
+<p><%= link_to "Want to leave a review? Go Sign up!", register_path %></p>
+<% end %>
+<div class="row">
+	<div class="col-md-8">
+		<h2>Reviews</h2>
+			<%= render @recipe.reviews %>
 
-<h5><%= link_to "Return to Recipes Listing", recipes_path, class:"btn btn-warning btn-small" %></h5>
+		</div>
+	</div>
+
+<h5><%= link_to "Return to Recipe Listing", recipes_path, class: "btn border-blue-browse btn-small" %></h5>
